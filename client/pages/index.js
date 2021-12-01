@@ -4,17 +4,17 @@ import Pagination from "./components/pagination";
 const server = "http://127.0.0.1:3001";
 
 export default function Home() {
-    const [serverResponse, setServerResponse] = useState("");
-    const [employeeData, setEmployeeData] = useState([]);
-    useEffect(() => {
-        Axios.get(`${server}/test`).then((response) => {
-            setServerResponse(response.data);
-        });
+    // const [serverResponse, setServerResponse] = useState("");
+    // const [employeeData, setEmployeeData] = useState([]);
+    // useEffect(() => {
+    //     Axios.get(`${server}/test`).then((response) => {
+    //         setServerResponse(response.data);
+    //     });
 
-        Axios.get(`${server}/api/employee/all`).then((response) => {
-            setEmployeeData(response.data);
-        });
-    }, []);
+    //     Axios.get(`${server}/api/employee/all`).then((response) => {
+    //         setEmployeeData(response.data);
+    //     });
+    // }, []);
 
     return (
         <div className="container mx-auto m-60">
@@ -39,22 +39,6 @@ export default function Home() {
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody className="bg-white divide-y divide-gray-200">
-                                    {employeeData.map((employee, key) => {
-                                        return (
-                                            <tr key={employee.employee_id} className={key % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{employee.employee_id}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{employee.employee_name}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{employee.employee_phone}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                    <div className="text-green-600 hover:text-green-900">
-                                                        Edit
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
                             </table>
                         </div>
                     </div>
